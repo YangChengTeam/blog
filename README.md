@@ -5,7 +5,8 @@
 ## 关于Android
 -  [kotlin_project_template](https://github.com/feiyouAndroidTeam/kotlin_project_template)
 -  [关于微信小程序安装包wxapkg](关于微信小程序安装包wxapkg.md)
-
+-  [关于Hook](关于Hook.md)
+-  [关于360脱壳](关于360脱壳.md)
 ## 关于iOS
 -  [ios游戏sdk](https://github.com/feiyouAndroidTeam/iossdk)
 ## 关于Web
