@@ -4,6 +4,8 @@
 -  [关于抓包](关于抓包.md)
 ## 关于Android
 -  [kotlin_project_template](https://github.com/feiyouAndroidTeam/kotlin_project_template)
+-  [关于微信小程序安装包wxapkg](关于微信小程序安装包wxapkg.md)
+
 ## 关于iOS
 -  [ios游戏sdk](https://github.com/feiyouAndroidTeam/iossdk)
 ## 关于Web
@@ -19,7 +21,6 @@
 -  [vip神器获取积分](https://github.com/mzpbvsig/get_vip_account)
 -  [装逼神器数据拉取](https://github.com/mzpbvsig/bi_auto)
 ## 关于Node
--  [关于微信小程序安装包wxapkg](关于微信小程序安装包wxapkg.md)
 -  [取名神器数据抓取](https://github.com/feiyouAndroidTeam/qmsq)
 ## 关于C/C++
 -  [andriod 模拟器检测](https://github.com/mzpbvsig/emulatorCheck)
