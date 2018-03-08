@@ -6,7 +6,7 @@
 -  [kotlin_project_template](https://github.com/feiyouAndroidTeam/kotlin_project_template)
 -  [关于微信小程序安装包wxapkg](关于微信小程序安装包wxapkg.md)
 -  [关于Hook](关于Hook.md)
--  [关于360脱壳](关于360脱壳.md)
+-  [关于脱壳](关于脱壳.md)
 ## 关于iOS
 -  [ios游戏sdk](https://github.com/feiyouAndroidTeam/iossdk)
 ## 关于Web
@@ -25,5 +25,8 @@
 -  [取名神器数据抓取](https://github.com/feiyouAndroidTeam/qmsq)
 ## 关于C/C++
 -  [andriod 模拟器检测](https://github.com/mzpbvsig/emulatorCheck)
+
+## 关于微信小程序
+-  [小程序坑点记录](小程序坑点记录.md)
 
 ## 关于UI

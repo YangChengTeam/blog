@@ -33,7 +33,8 @@
 - cd com.tencent.mm   进入微信沙盒目录       
 - find -name *.wxapkg      
 - exit
-- adb push /data/data/com.tencent.mm/MicroMsg/030552b092dfdc3c7251184c7356578a/appbrand/pkg  .  将小程序包下载到当前目录
+- adb push /data/data/com.tencent.mm/MicroMsg/030552b092dfdc3c7251184c7356578a/appbrand/pkg  .  将小程序包下载到当前目录     
+
 
 ## wxapkg
 wxapkg是微信自定义的一种文件格式。       
