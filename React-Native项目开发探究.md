@@ -2,22 +2,26 @@
 
 ## 关于环境搭建
 
-> [React-Native环境搭建](http://facebook.github.io/react-native/docs/getting-started.html)
+> [React-Native环境搭建](http://facebook.github.io/react-native/docs/getting-started.html)           
 **注意** npm5 降级 npm4  (npm5会导致一个bug)    
 npm 国内替换淘宝源       
 也可以用yarn替换npm （yarn同样替换淘宝源） npm有点慢     
 
 
 ### 1.快速搭建
-无sdk搭建 快速上手 不生成项目 依托expo 
+> 无sdk搭建 快速上手 不生成项目 依托expo       
+[关于expo](https://expo.io/)     
 ```
 npm install -g create-react-native-app  
 
 create-react-native-app AwesomeProject
 
 cd AwesomeProject
-npm start ```
-> [关于expo](https://expo.io/)
+npm start 
+
+```        
+
+ 
 
 ### 2.项目搭建
 ```
@@ -28,6 +32,7 @@ cd AwesomeProject
 react-native run-ios
 
 ```
+
 
 ## 运行时
 [runtime](https://facebook.github.io/react-native/docs/javascript-environment.html)
