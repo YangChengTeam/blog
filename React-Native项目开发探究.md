@@ -38,6 +38,13 @@ react-native run-ios
 ## 关于http网络
 [详见](https://facebook.github.io/react-native/docs/network.html)
 
-
 ## [其它]
 [其它](https://facebook.github.io/react-native/docs/)
+
+## [遇到问题]
+
+- Q:ios编绎错误：glog-0.3.4.tar.gz: No such file or directory   
+- A:[glog](http://blog.csdn.net/chevins/article/details/78489688)
+
+
+
