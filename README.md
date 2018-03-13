@@ -36,7 +36,7 @@
 -  [疯狂猜品牌通关](js/brand.js)
 -  [猜歌达人通关](js/song.js)
 -  [猜歌大吉通关](js/mysong.js)
--  [超强头脑获取礼品](js/king.js)
+-  [挑战荣耀获取礼品](js/king.js)
 -  [2048小游戏设置分数](js/game.js)
 -  [express使用](js/express)
 -  [electron使用](js/electron)
