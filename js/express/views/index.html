@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=0">
+	<title>测</title>
+	<style type="text/css">
+	    * {
+	    	margin: 0;
+	    }
+	    html,body {
+	    	width: 100%;
+	    	height: 100%;
+	    	background: #ddd;
+	    	font-size: 16px;
+	    }
+
+	    input, select {
+			border: none;
+			font-size: 14px;
+
+		}
+		button,input,select:focus {
+			outline:none;
+		}
+
+		select {
+			appearance:none;
+  			-moz-appearance:none;
+  			-webkit-appearance:none;
+		}
+
+	    #main {
+	    	width: 100%;
+	    	background: #fff;
+	    	padding-bottom: 20px;
+	    }
+	    .main {
+	    	display: flex;
+	    	width: 350px;
+	    	height: auto;
+	    	flex-direction: column;
+	    	margin: 0 auto;
+	    }
+
+	    .main .item {
+	    	display: flex;
+	    	height: 40px;
+	    	border-bottom: solid 1px #aaa;
+	    	display: row;
+	    	align-items: center;
+	    }
+
+	    .item > span {
+	    	width: 12%;
+	    }
+
+	    .main > button {
+	    	border: solid 1px #ed4e1e;
+	    	height: 40px;
+	    	color: #ed4e1e;
+	    	margin-top: 20px;
+	    	box-shadow: 2px 2px 0px #aaa;
+	    }
+
+	    .main > button:focus {
+	    	box-shadow: none;
+	    }
+
+	     .detail {
+	    	width: 350px;
+	    	height: auto;
+	    	flex-direction: column;
+	    	margin: 0 auto;
+	    	display:  none;
+	    }
+
+	    .detail .item {
+	    	min-height: 48px;
+	    }
+	</style>
+</head>
+
+<body>
+<div id="main">
+<div class="main">
+	<div class="item">
+		<span>姓</span>
+		<input type="text" name="lastname" placeholder="请输入姓氏" />
+	</div>
+	<div class="item">
+		<span>名</span>
+		<input type="text" name="firstname" placeholder="请输入名字"/>
+	</div>
+	<div class="item">
+		<span>性别</span>
+		<input type="radio" name="sex" checked="checked" value="1" />&nbsp;&nbsp;<label>男</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="radio" name="sex" value="2"/>&nbsp;&nbsp;<label>女</label>
+	</div>
+	<div class="item">
+		<span>阳历</span>
+		<input type="text" name="birthdaydate" placeholder="格式: 2018-01-29" />
+	</div>
+	<div class="item">
+		<span>时间</span>
+		<input type="text" name="birthdaytime" placeholder="格式: 19:42"  />
+
+	</div>
+	<button click="submit">开始测试</button>
+</div>
+<div class="detail">
+	<div class="item"></div>
+	
+</div>
+</div>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+	 $(function(){
+	 	 $(".main button").click(function(){
+	 	 	    var lastname = $('input[name="lastname"]').val();
+	 	 	    var firstname = $('input[name="firstname"]').val();
+	 	 	    var birthdaydate = $('input[name="birthdaydate"]').val();
+	 	 	    var birthdaytime = $('input[name="birthdaytime"]').val();
+	 	 	    var sex = $('input[type="radio"]:checked').val();
+
+	 	 	    if(lastname.length == 0){
+	 	 	    	alert('请输入姓氏');
+	 	 	    	return;
+	 	 	    }
+
+	 	 	    if(firstname.length == 0){
+	 	 	    	alert('请输入名字');
+	 	 	    	return;
+	 	 	    }
+
+	 	 	    if(birthdaydate.length == 0){
+	 	 	    	alert('请输入出生阳历');
+	 	 	    	return;
+	 	 	    }
+
+	 	 	    if(birthdaytime.length == 0){
+	 	 	    	alert('请输入出生时间');
+	 	 	    	return;
+	 	 	    }
+
+	 	 		$.ajax({
+	 	 			type: 'POST',
+	 	 			url: '/api/reviewname',
+	 	 			data: {
+	 	 				lastname: lastname,
+	 	 				firstname: firstname,
+	 	 				birthdaydate: birthdaydate,
+	 	 				birthdaytime: birthdaytime,
+	 	 				sex: sex,
+	 	 			},
+	 	 			success: function(data){
+	 	 				 $(".main").hide(200);
+	 	 				 $(".detail").show(100);
+	 	 			},
+	 	 			dataType: 'json'
+	 	 		});
+	 	 });
+	 });
+</script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=0">
+	<title>酷狗音乐免费下载</title>
+	<style type="text/css">
+	    * {
+	    	margin: 0;
+	    }
+	    html,body {
+	    	width: 100%;
+	    	height: 100%;
+	    	background: #fff;
+	    	font-size: 16px;
+	    }
+
+	    input {
+			border: solid 1px #ccc;	
+			font-size: 14px;
+			height: 30px;
+			border-radius: 5px;
+
+		}
+		button,input,select:focus {
+			outline:none;
+		}
+
+		select {
+			appearance:none;
+  			-moz-appearance:none;
+  			-webkit-appearance:none;
+		}
+
+	    #main {
+	    	position: fixed;
+	    	width: 100%;
+	    	top: 0;
+	    	left: 0;
+	    }
+	    .main {
+	    	display: flex;
+	    	width: 100%;
+	    	height: 60px;
+	    	flex-direction: row;
+	    	margin: 0 auto;
+	    	align-items: center;
+	    	justify-content: center;
+	    	background: #485ea5;
+	    }
+
+	    .main > button {
+	    	border: solid 1px #fff;
+	    	height: 30px;
+	    	color: #333;
+	    	background: #fff;
+	    	box-shadow: 2px 2px 0px #aaa;
+	    	margin-left: 20px;
+	    }
+
+	    .main > button:focus {
+	    	box-shadow: 1px 1px 0px #aaa;
+	    }
+
+	    .keyword {
+	    	width: 70%;	
+	    	padding-left: 10px;
+	    }
+
+	    .detail {
+	    	display: flex;
+	    	flex-direction: column;
+	    	background: #fff;
+	    	height: 100%;
+	    	width: 100%;
+	    	margin-top: 60px;
+
+	    }
+
+	    .detail > ul {
+	    	display: flex;
+	    	flex-direction: column;
+	    	flex-flow: wrap;
+	    }
+
+	    .detail > ul > li {
+	    	display: flex;
+	    	width: 100%;
+	    	flex-direction: row;
+	    	height: 40px;
+	    	list-style-type:none;
+	    	line-height: 40px;
+	    	border-bottom: solid 1px #ccc;
+	    	font-size: 16px;
+	    	font-family: "宋体";	
+	    	font-weight: normal;
+	    	justify-content: space-around;
+	    }
+
+	    .detail > ul > li > span {
+	    	display: inline-block;
+	    	width: 70%;
+	    	overflow: hidden;
+	    	padding-right: 10px;
+	    	text-align: left;
+	    }
+
+	    .detail > ul > li > span > em {
+	    	margin: 0;
+	    	padding: 0;
+	    }
+
+	    .detail > ul > li > strong {
+	    	display: inline-block;
+	    	width: 30%;
+	    	overflow: hidden;
+	    	padding-right: 10px;
+	    	text-align: right;
+	    	color: #333;
+	    }
+	
+	
+	</style>
+</head>
+
+<body>
+
+<div id="main">
+<div class="main">
+	 <input type="text" name="keyword" class="keyword" />
+	 <button onclick="search()">搜索</button>
+</div>
+</div>
+
+<div class="detail">
+	
+	<ul class="list">
+		
+	</ul>
+</div>
+
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+	 
+
+	 function search(kpage){
+	 	var keyword = $(".keyword").val();
+	 	if(keyword.length == 0){
+	 		alert("请输入关键字");
+	 		return;
+	 	}
+	 	if(typeof kpage == undefined){
+	 	 			window.page = 1;
+	 	 			$(".list").html("");
+	 	}
+	 	$.ajax({
+	 	 	type: 'POST',
+	 	 	url: '/api/search',
+	 	 	data: {
+	 	 		keyword: keyword,
+	 	 		page: window.page
+	 	 	},
+	 	 	success: function(data){
+	 	 		var html = "";
+	 	 		if(data["status"] == 1 && data["data"] && data["data"]["info"]){
+	 	 			for(var i = 0 ; i <  data["data"]["info"].length ; i++){
+	 	 				var item = data["data"]["info"][i];
+	 	 				var filename = item['filename'].replace('<em>', '').replace("</em>", "");
+	 	 				html +=`<li><span>${item['filename']}</span><a><strong onclick="download(this, '${filename}', '${item.hash}')">下载</strong></a></li>`;
+	 	 			}
+	 	 			$(".list").html($(".list").html()+html);
+	 	 			return;
+	 	 		}
+	 	 		alert("未搜索到相关数据");		 
+	 	 	},
+	 	 	dataType: 'json'
+	 	});
+	 }
+
+	 function download(obj, filename, sqhash){
+	 	 $.ajax({
+	 	 	type: 'POST',
+	 	 	url: '/api/download',
+	 	 	data: {
+	 	 		sqhash: sqhash
+	 	 	},
+	 	 	success: function(data){
+	 	 		if(data && data["error"]){
+	 	 			alert("服务端在检测权限，请重试");
+	 	 			return;
+	 	 		}
+	 	 		if(data && typeof data['url'] != undefined){
+	 	 		     var $a = $(obj).parent("a");	
+	 	 			 $a.attr("download", filename+".mp3");
+	 	 			 $a.attr({target: '_blank', 
+                   	 href  : data['url']});
+                }
+                window.setTimeout(function(){
+                	$("#download").click();
+                }, 100);
+                
+	 	 	},
+	 	 	dataType: 'json'
+	 	});
+	 }
+	 window.page = 1;
+	 $(window).scroll(function() {
+   		if($(window).scrollTop() + $(window).height() == $(document).height()) {
+      		window.page++;
+      		search(window.page);
+   	 	}
+	 });
+	 
+</script>
+</body>
+</html>

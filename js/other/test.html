@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="util.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+	// f函数被重写
+	var f = function(){
+		console.log("f");
+	}
+	//命名空间
+	var A = {};
+	A.B = {};
+	A.B.f = function(){
+		console.log("A.B.f");	
+	};
+
+	f();
+	f1();
+	A.B.f();
+</script>
+</body>
+</html>
