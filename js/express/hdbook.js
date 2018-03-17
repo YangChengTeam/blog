@@ -4,6 +4,7 @@ const fs = require('fs')
 const {to} = require('await-to-js')
 const cheerio = require('cheerio')
 const download = require('image-downloader')
+const md5 = require('md5')
 
 function send(path){
    var data = []
@@ -54,12 +55,24 @@ async function bookdetail(id){
    let bookGrade = $(".bookGrade").text()
    let bookSubject = $(".bookSubject").text()
    let bookPress = $($(".de2 ul li").get(3)).text()
-   let answerImgs = []
-   let imgs = $(".show_chapter img")
+    
+   let answers = []
+   let types = $("#bookChapter div")
+   let imgs = $("#answer_div div")
 
-   for(let i = 0; i < imgs.length; i++){
-       let imgUrl = $(imgs.get(i)).attr('src')
-       answerImgs.push(imgUrl)
+   for(let i = 0; i < types.length; i++){
+       let type = $(types.get(i)).text()
+       let imgUrls = $(imgs.get(i)).find("img")
+       var answerImgs = []
+       for(var j = 0; j < imgUrls.length; j++){
+           let imgUrl = $(imgUrls.get(j)).attr('src')
+           answerImgs.push(imgUrl)
+       }
+
+       answers.push({
+          title: type,
+          imgs: answerImgs
+       })
    }
 
    return [null, {bookName: bookName,
@@ -68,10 +81,21 @@ async function bookdetail(id){
            bookGrade: bookGrade,
            bookSubject: bookSubject,
            bookPress: bookPress,
-           answerImgs: answerImgs}]
+           answers: answers}]
 }     
 
 
+function getCdnUrl(url, offset = 5000){
+   let ipImage = 'http://authimage.hdzuoye.com'
+   let timestamp = parseInt((new Date()).getTime() / 1000) + offset
+   let path = url.split('?')
+   let path2 = path[0].split(ipImage)
+   if(path2.length < 2){
+       path = ipImage + path
+       path2[1] = url
+   }
+   return path[0] + `?auth_key=${timestamp}-0-0-` + md5(`${path2[1]}-${timestamp}-0-0-burglar88372`)
+}
 
 var express = require('express')
 var bodyParser = require('body-parser')
@@ -89,6 +113,18 @@ app.get('/api/detail',async function(req, res){
     	res.send(data)
     }
 });
+
+
+
+
+app.get('/api/getCdnUrl',async function(req, res){
+    let url = req.query.url
+    res.setHeader('Content-Type', 'application/json')
+    res.send(getCdnUrl(url))
+});
+
+
+
 
 
 var server = http.createServer(app);
