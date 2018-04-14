@@ -25,8 +25,6 @@ function send(path){
           res.on('end', ()=>{
               resolve(data.join('').toString())
           })
-
-      
       });
 
       req.on('error', (e) => {

@@ -3,6 +3,8 @@
 ## 关于基础
 -  [关于抓包](关于抓包.md)	
 -  [关于app数据传输安全概述](关于app数据传输安全.md)		
+-  [关于代码引用和安装](关于代码引用和安装.md)
+-  [关于于库动态加载](关于库动态加载.md)
 
 ## 关于Android
 -  [kotlin_project_template](https://github.com/feiyouAndroidTeam/kotlin_project_template)
@@ -33,16 +35,13 @@
 -  [模块测试2](js/seajs)
 -  [模块测试3](js/require)
 -  [取名神器数据抓取](https://github.com/feiyouAndroidTeam/qmsq)
--  [互动作业数据抓取](js/hdzj.js)
 -  [疯狂猜品牌通关](js/brand.js)
 -  [猜歌达人通关](js/song.js)
 -  [猜歌大吉通关](js/mysong.js)
--  [挑战荣耀获取礼品](js/king.js)
 -  [2048小游戏设置分数](js/game.js)
 -  [express使用](js/express)
 -  [electron使用](js/electron)
 -  [wss使用](js/wss)
--  [其它](js/test)
 
 ## 关于C/C++
 -  [andriod 模拟器检测](https://github.com/mzpbvsig/emulatorCheck)
@@ -54,5 +53,9 @@
 ## React-Native
 -  [React-Native项目开发探究](React-Native项目开发探究.md)
 
+## 实战
+- [关于互动作业抓包.md](关于互动作业抓包.md)
+
+## 机器学习
 
 ## 关于UI

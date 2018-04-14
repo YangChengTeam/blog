@@ -112,17 +112,28 @@ app.get('/api/detail',async function(req, res){
     } else {
     	res.send(data)
     }
-});
-
-
+})
 
 
 app.get('/api/getCdnUrl',async function(req, res){
     let url = req.query.url
     res.setHeader('Content-Type', 'application/json')
     res.send(getCdnUrl(url))
-});
+})
 
+const sharp = require('sharp')
+console.log(sharp)
+
+app.get('/image', (req, res)=>{
+    res.setHeader('Content-Type', 'image/jpeg')
+    const watermark = new Buffer(`<svg width='512' height='512'>
+    <text x="10" y="76" font-size="14" >abcd</text>
+  </svg>`)
+    var png = sharp('appyb.png')
+    .overlayWith(watermark, { cutout: false })
+    .png().toFile('output.webp', (err, info) => {});
+    res.send(png)
+})
 
 
 
