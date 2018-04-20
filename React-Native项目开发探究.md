@@ -49,7 +49,7 @@ react-native run-ios
 ## [遇到问题]
 
 - Q:ios编绎错误：glog-0.3.4.tar.gz: No such file or directory   
-- A:[glog](http://blog.csdn.net/chevins/article/details/78489688)
+- A:[glog](http://blog.csdn.net/chevins/article/details/78489688)    
 
 
 

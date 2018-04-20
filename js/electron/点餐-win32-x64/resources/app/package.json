@@ -1,0 +1,29 @@
+{
+  "name": "点餐",
+  "version": "0.1.0",
+  "main": "main.js",
+  "dependencies": {
+    "electron-compile": "^6.4.2"
+  },
+  "devDependencies": {
+    "electron-compile": "^6.4.2",
+    "electron-prebuilt-compile": "1.8.4",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-winstaller": "^2.6.4",
+    "protocol": "^0.1.4"
+  },
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "package2": "electron-packager . --platform=win32 --arch=ia32 --electron-version=1.4.15 --overwrite --ignore=node_modules --ignore=.gitignore"
+  },
+  "make_targets": {
+    "win32": [
+      "squirrel"
+    ],
+    "darwin": [
+      "dmg"
+    ]
+  }
+}

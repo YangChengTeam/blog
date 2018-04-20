@@ -18,12 +18,16 @@ var server=https.createServer(options, function (req, res) {//要是单纯的htt
 var wss = new ws.Server( { server: server } );
 //把创建好的https服务器丢进websocket的创建函数里，ws会用这个服务器来创建wss服务
 //同样，如果丢进去的是个http服务的话那么创建出来的还是无加密的ws服务
-wss.on( 'connection', function ( wsConnect ) {
-    wsConnect.on( 'message', function ( message ) {
-        console.log( message );
-        wsConnect.send("11111");
-    });
-    wsConnect.on( 'error', function ( message ) {
-        console.log( message );
-    });
+const WebSocket = require('ws');
+
+const ws = new WebSocket('ws://www.host.com/path');
+
+ws.on('open', function open() {
+  ws.send('something');
 });
+
+ws.on('message', function incoming(data) {
+  console.log(data);
+});
+
+
