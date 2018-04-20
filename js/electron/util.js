@@ -1,7 +1,7 @@
 function login(username, password, callback) {
     $.ajax({
         type: 'POST',
-        url: "http://dc.wk2.com/Home/User/login.html",
+        url: "http://dc.whfeiyou.com/Home/User/login.html",
         data: {
             "username": username,
             "password": password
@@ -53,7 +53,7 @@ function view(username, successfn, showfn, scope) {
                 }
                 $.ajax({
                     type: 'GET',
-                    url: "http://dc.wk2.com/Home/Index/index.html",
+                    url: "http://dc.whfeiyou.com/Home/Index/index.html",
                     crossDomain: true,
                     success: function(data, status, xhr) {
                         if (data.indexOf(username) != -1) {
@@ -87,7 +87,7 @@ function order(username, bumen, o_type, islogin, successfn, failfn, scope) {
     }
     $.ajax({
         type: 'POST',
-        url: "http://dc.wk2.com/Home/User/order.html",
+        url: "http://dc.whfeiyou.com/Home/User/order.html",
         data: {
             'name': username,
             'bumen': bumen,
