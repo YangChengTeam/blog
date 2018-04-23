@@ -1,7 +1,7 @@
 #!/bin/sh
 # 作者: 张凯
 
-# ab测试： ab -c 1000 -n 1000 http://192.168.80.251:8443/genapk 
+# ab测试： ab -c 1000 -n 1000 http://127.0.0.1:8443/genapk 
 
 apktool_path='views/pkg/script/apktool.jar'  #apktool.jar文件路径
 jks_path='fyzs.jks' #签名文件路径
