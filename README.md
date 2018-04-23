@@ -68,4 +68,4 @@
 
 ## 实战
 - [关于互动作业抓包.md](关于互动作业抓包.md)  
-- [关于动态替换apk名称和图标的调优](js/express/views/pkg/script/auto.sh)
+- [关于动态替换apk名称和图标的调优之后](js/express/views/pkg/script/auto.sh)
