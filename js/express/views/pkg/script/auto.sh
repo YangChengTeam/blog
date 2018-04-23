@@ -27,7 +27,7 @@ then
 	exit
 fi
 
-# 检测打包进程上限
+# 检测打包进程是否到达上限
 result=0
 for (( i=1; i<=$gen_limit; i++ ))
 do
