@@ -1,0 +1,40 @@
+Read the Fucking source code
+----------------
+
+基础知识
+----
+
+- 进程<br/>
+- 进程间通信<br/>
+- binder<br/>
+- contentProvider<br/>
+- 注解<br/>
+- aidl<br/>
+- hook动态代理<br/>
+- jni<br/>
+- c/c++<br/>
+
+
+
+启动流程
+----
+
+
+
+app/java/io/virtualapp/lib/src/java/VApp.java
+----------------
+- 四程进程类型
+```
+		
+```
+
+```
+  attachBaseContext(Context base)
+  VirtualCore.get().startup(base)
+```
+
+app/java/io/virtualapp/lib/src/java/java/ServiceManagerNative.java
+-----------------
+
+
+

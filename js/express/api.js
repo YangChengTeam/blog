@@ -103,7 +103,7 @@ app.post('/api/reviewname', function(req, res){
     reviewname(params, d=>{
         res.setHeader('Content-Type', 'application/json');
         res.send(d);
-    }); 
+    });
 });
 
 app.get('/genapk', function(req, res){
@@ -113,7 +113,6 @@ app.get('/genapk', function(req, res){
      exec(`sh ${path.join(__dirname , '/views/pkg/script/auto.sh')} ${path.join(__dirname, '/views/commonRelease-3.1.0.Alpha6.apk')} ${new Date().getTime()} ${path.join(__dirname, '/views/ic_empty.png')} ${new Date().getTime()}`, (error, stdout, stderr) => {
         res.send(`${stdout}`);
      })
-     
 });
 
 

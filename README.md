@@ -10,7 +10,6 @@
 ## 关于Android
 -  [kotlin_project_template](https://github.com/feiyouAndroidTeam/kotlin_project_template)
 -  [关于微信小程序安装包wxapkg](关于微信小程序安装包wxapkg.md)
--  [关于Hook](关于Hook.md)
 -  [关于脱壳](关于脱壳.md)
 
 ## 关于iOS
@@ -68,4 +67,5 @@
 
 ## 实战
 - [关于互动作业抓包.md](关于互动作业抓包.md)  
-- [关于动态替换apk名称和图标的调优之后](js/express/views/pkg/script/auto.sh)
+- [关于动态替换apk名称和图标的调优之后](js/express/views/pkg/script/)
+
