@@ -88,10 +88,7 @@ function run(info){
 function time(timestamp){
 	var minutes = parseInt(timestamp / 1000 / 60);
 	var seconds = parseInt(timestamp / 1000);
-	if(seconds == 0){
-		seconds = `0${seconds}`;
-	}
-	return `0${minutes}:${seconds}`
+	return `0${minutes}:${(seconds ? "0" : "") + seconds}`
 }
 
 // 是否已打包

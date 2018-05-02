@@ -5,7 +5,8 @@
 -  [关于app数据传输安全概述](关于app数据传输安全.md)		
 -  [关于代码引用和安装](关于代码引用和安装.md)    
 -  [关于于库动态加载](关于库动态加载.md)    
--  [关于破解应用](关于破解应用.md)      
+-  [关于破解应用](关于破解应用.md)     
+-  [关于源码阅读](关于源码阅读.md) 
 
 ## 关于Android
 -  [kotlin_project_template](https://github.com/feiyouAndroidTeam/kotlin_project_template)
