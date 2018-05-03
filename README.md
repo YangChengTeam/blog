@@ -39,7 +39,6 @@
 -  [疯狂猜品牌通关](js/brand.js)
 -  [猜歌达人通关](js/song.js)
 -  [猜歌大吉通关](js/mysong.js)
--  [2048小游戏设置分数](js/game.js)
 -  [express使用](js/express)
 -  [electron使用](js/electron)
 -  [wss使用](js/wss)
@@ -58,13 +57,9 @@
 
 ## 机器学习
 
-### 数学基础
-### 机器学习框架
 
 ## 关于UI
-
-### 设计语言
-### 工具
+[设计语言](设计语言.md)
 
 ## 实战
 - [关于互动作业抓包.md](关于互动作业抓包.md)  
