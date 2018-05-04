@@ -87,8 +87,8 @@ function run(info){
 // 打包耗时计算
 function time(timestamp){
 	var minutes = parseInt(timestamp / 1000 / 60);
-	var seconds = parseInt(timestamp / 1000);
-	return `0${minutes}:${(seconds ? "0" : "") + seconds}`
+	var seconds = parseInt((timestamp - minutes*1000*60) / 1000);
+	return `0${minutes}:${(seconds > 10 ? "" : "0") + seconds}`
 }
 
 // 是否已打包

@@ -4,7 +4,7 @@
       "name": "package",
       "script": "./auto.js",
       "exec_mode": "cluster",
-      "instances": 4
+      "instances": 6
     }
   ]
 }
