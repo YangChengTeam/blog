@@ -56,12 +56,15 @@
 
 
 ## 机器学习
+- [数学基础](数学基础.md)
+- [机器学习框架](机器学习框架.md)
 
 
 ## 关于UI
 [设计语言](设计语言.md)
 
-## 实战
+## 其它
 - [关于互动作业抓包.md](关于互动作业抓包.md)  
 - [关于动态替换apk名称和图标的调优之后](js/express/views/pkg/script/)
+- [SDK相关文档](https://github.com/feiyouAndroidTeam/sdk2pc)
 

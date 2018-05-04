@@ -1,4 +1,4 @@
-Read the Fucking source code
+Read the Fucking source code   virtualapp
 ----------------
 
 基础知识
@@ -11,27 +11,25 @@ Read the Fucking source code
 - 注解<br/>
 - aidl<br/>
 - hook动态代理<br/>
-- jni<br/>
-- c/c++<br/>
+- jni c/c++<br/>
+
 
 
 
 启动流程
 ----
 
-
-
-app/java/io/virtualapp/lib/src/java/VApp.java
+app/java/io/virtualapp/lib/src/java/VApp.java  <br/>
 ----------------
 - 四程进程类型
-```
-		
-```
+*****每个进程启动的时候VApp.java都会执行一次<br/>
+不同类型的进程负责不同的任务， 利用contentProvider进程间的通信
 
 ```
   attachBaseContext(Context base)
   VirtualCore.get().startup(base)
 ```
+
 
 app/java/io/virtualapp/lib/src/java/java/ServiceManagerNative.java
 -----------------
